@@ -1,0 +1,14 @@
+- name: "Installing httpd"
+  package:
+          name: "httpd"
+          state: present
+
+- name: "Creating web page"
+  copy:
+          content: "Hi this is {{ ansible_facts['hostname'] }} of roles"
+          dest: "/var/www/html/index.html"
+
+- name: "Starting httpd services"
+  service:
+          name: "httpd"
+          state: started  
